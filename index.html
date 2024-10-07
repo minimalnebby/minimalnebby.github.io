@@ -1,0 +1,78 @@
+<<<<<<<< HEAD:Compoundo V2/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compoundo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Compoundo</h1>
+        <p>Complete the chain of compound words within 3 mistakes! ex. Starfish -> Fishnet-> Network </p>
+
+        <div class="word-chain-vertical">
+            <span id="start-word" class="word"></span> <!-- Dynamically filled by script -->
+            <div id="word-inputs" class="inputs-vertical">
+                <!-- Word input fields will be generated here -->
+            </div>
+            <span id="end-word" class="word"></span> <!-- Dynamically filled by script -->
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Type your word..." autofocus>
+            <button id="submit-btn">Submit</button>
+        </div>
+
+        <div id="feedback"></div>
+        <div id="mistakes">Mistakes: 0 / 3</div>
+
+        <div id="game-over" class="hidden">
+            <p id="game-over-message"></p>
+            <button id="restart-btn">Restart Game</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+========
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Chain Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Compoundo</h1>
+        <p>Complete the chain of compound words!</p>
+
+        <div class="word-chain">
+            <span id="start-word"></span> <!-- Dynamically filled by script -->
+            <div id="word-inputs" class="inputs">
+                <!-- Word input fields will be generated here -->
+            </div>
+            <span id="end-word"></span> <!-- Dynamically filled by script -->
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Type your word..." autofocus>
+            <button id="submit-btn">Submit</button>
+        </div>
+
+        <div id="feedback"></div>
+        <div id="mistakes">Mistakes: 0 / 4</div>
+
+        <div id="game-over" class="hidden">
+            <p id="game-over-message"></p>
+            <button id="restart-btn">Restart Game</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+>>>>>>>> b2b5d9e1a8ce1769bdb16a0959a6dd3596032e11:index.html
+</html>
