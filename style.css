@@ -1,4 +1,3 @@
-<<<<<<<< HEAD:Compoundo V2/style.css
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -77,81 +76,4 @@ button:hover {
 
 #game-over {
     margin-top: 20px;
-========
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.game-container {
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 400px;
-}
-
-.word-chain {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-}
-
-.inputs {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-}
-
-.inputs span {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-#user-input {
-    width: 80%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-}
-
-button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#feedback {
-    margin-top: 10px;
-    font-size: 1.1em;
-    color: red;
-}
-
-#mistakes {
-    margin-top: 10px;
-}
-
-.hidden {
-    display: none;
-}
-
-#game-over {
-    margin-top: 20px;
->>>>>>>> b2b5d9e1a8ce1769bdb16a0959a6dd3596032e11:style.css
 }
