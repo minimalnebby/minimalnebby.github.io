@@ -1,12 +1,17 @@
-// Fixed compound word chain
-const wordChain = [
-    'Starship', 'Shipyard', 'Yardstick', 'Stickman', 'Manpower', 'Powerboat', 'Boathouse'
-];
+// Object storing different word chains by version or date
+const wordChainsByVersion = {
+    "1": ['Starship', 'shipyard', 'yardstick', 'stickman', 'manpower', 'powerboat', 'Boathouse'],
+    "2": ['Notebook', 'bookstore', 'storefront', 'frontline', 'lineup', 'upstream', 'Streamline'],
+    "3": ['Rainbow', 'bowtie', 'tieback', 'backpack', 'packhorse','horsepower','Powerline']
+};
+
+// This will hold the currently selected word chain
+let wordChain = [];
 
 // Number of words in the chain (including start and end)
 let currentWordIndex = 1; // Start after the first word
 let mistakes = 0;
-const maxMistakes = 3;
+const maxMistakes = 4;
 let revealedLetters = {}; // Track revealed letters per word
 
 // HTML Elements
@@ -20,6 +25,25 @@ const gameOverMessage = document.getElementById('game-over-message');
 const restartBtn = document.getElementById('restart-btn');
 const startWordSpan = document.getElementById('start-word');
 const endWordSpan = document.getElementById('end-word');
+const versionSelect = document.getElementById('version-select');
+
+// Populate the versions dropdown menu with available versions
+function populateVersionSelect() {
+    const sortedVersions = Object.keys(wordChainsByVersion).sort().reverse(); // Sort the versions in descending order
+    for (const version of sortedVersions) {
+        const option = document.createElement('option');
+        option.value = version;
+        option.textContent = `Version: ${version}`;
+        versionSelect.appendChild(option);
+    }
+}
+
+// Function to set the word chain based on the selected version
+function loadWordChain() {
+    const selectedVersion = versionSelect.value;
+    wordChain = wordChainsByVersion[selectedVersion];
+    restartGame(); // Restart the game whenever a new version is selected
+}
 
 // Populate the start and end words
 function setStartAndEndWords() {
@@ -29,9 +53,14 @@ function setStartAndEndWords() {
 
 // Create input fields for each word in the chain (except the first and last)
 function createWordInputs() {
+    // Clear previous inputs to prevent blank lines
+    wordInputsDiv.innerHTML = ''; 
+    
     for (let i = 1; i < wordChain.length - 1; i++) {
         const span = document.createElement('span');
-        span.textContent = '_'.repeat(wordChain[i].length); // Initially hide all letters
+        // Create a dashed line based on the length of the word (e.g., "- - -")
+        const dashedLine = '- '.repeat(wordChain[i].length).trim(); // Ensure no trailing space
+        span.textContent = dashedLine; // Initially hide all letters with dashes
         span.setAttribute('data-word', wordChain[i]); // Store the full word as data attribute
         span.classList.add('word'); // Add word class
         wordInputsDiv.appendChild(span);
@@ -52,7 +81,9 @@ function revealHint() {
         // Reveal another letter in the word two positions ahead if there are letters left to reveal
         if (revealedLetters[revealWordIndex] < revealWord.length) {
             revealedLetters[revealWordIndex]++;
-            span.textContent = revealWord.substring(0, revealedLetters[revealWordIndex]) + '_'.repeat(revealWord.length - revealedLetters[revealWordIndex]); // Reveal more letters
+            const revealedPart = revealWord.substring(0, revealedLetters[revealWordIndex]);
+            const remainingDashes = '- '.repeat(revealWord.length - revealedLetters[revealWordIndex]).trim();
+            span.textContent = revealedPart + ' ' + remainingDashes; // Show revealed letters and remaining dashes
         }
     }
 }
@@ -93,8 +124,16 @@ function restartGame() {
     feedbackDiv.textContent = '';
     mistakesDiv.textContent = `Mistakes: 0 / ${maxMistakes}`;
     gameOverDiv.classList.add('hidden');
-    wordInputsDiv.innerHTML = '';
-    createWordInputs();
+    setStartAndEndWords(); // Set the start and end words based on the new version
+    createWordInputs(); // Create input fields for the new version
+}
+
+// Automatically load the latest version when the game starts
+function loadLatestVersion() {
+    const sortedVersions = Object.keys(wordChainsByVersion).sort(); // Sort the versions
+    const latestVersion = sortedVersions[sortedVersions.length - 1]; // Get the latest version
+    versionSelect.value = latestVersion; // Set the dropdown to the latest version
+    loadWordChain(); // Load the word chain for the latest version
 }
 
 // Event listeners
@@ -105,7 +144,8 @@ userInput.addEventListener('keydown', (e) => {
     }
 });
 restartBtn.addEventListener('click', restartGame);
+versionSelect.addEventListener('change', loadWordChain); // Reload the game when a different version is selected
 
 // Initialize game
-setStartAndEndWords(); // Set the start and end words dynamically
-createWordInputs();
+populateVersionSelect(); // Populate the version dropdown
+loadLatestVersion(); // Load the latest version by default
