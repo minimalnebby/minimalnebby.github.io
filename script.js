@@ -33,7 +33,7 @@ function populateVersionSelect() {
     for (const version of sortedVersions) {
         const option = document.createElement('option');
         option.value = version;
-        option.textContent = `Version: ${version}`;
+        option.textContent = `Day:${version}`;
         versionSelect.appendChild(option);
     }
 }
