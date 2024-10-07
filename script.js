@@ -6,7 +6,7 @@ const wordChain = [
 // Number of words in the chain (including start and end)
 let currentWordIndex = 1; // Start after the first word
 let mistakes = 0;
-const maxMistakes = 4;
+const maxMistakes = 3;
 let revealedLetters = {}; // Track revealed letters per word
 
 // HTML Elements
