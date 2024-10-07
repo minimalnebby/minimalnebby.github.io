@@ -1,6 +1,6 @@
 // Fixed compound word chain
 const wordChain = [
-    'Starship', 'Shipyard', 'Yardstick', 'Stickman', 'Manpower', 'Powerboat', 'Boathouse'
+    'Notebook', 'bookstore', 'storefront', 'frontline', 'lineup', 'upstream', 'Streambed'
 ];
 
 // Number of words in the chain (including start and end)
