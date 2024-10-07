@@ -1,6 +1,6 @@
 // Object storing different word chains by version or date
 const wordChainsByVersion = {
-    "1": ['Starship', 'shipyard', 'yardstick', 'stickman', 'manpower', 'powerboat', 'Boathouse'],
+    "1": ['Starship', 'shipyard', 'yardstick', 'stickman', 'manpower', 'powerhouse', 'houseboat'],
     "2": ['Notebook', 'bookstore', 'storefront', 'frontline', 'lineup', 'upstream', 'Streamline'],
     "3": ['Rainbow', 'bowtie', 'tieback', 'backpack', 'packhorse','horsepower','Powerline']
 };
